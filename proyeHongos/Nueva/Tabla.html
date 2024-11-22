@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Tabla de Temperaturas </title>
+
+
+</header>
+<body>
+    <h1>TABLA</h1>
+<table border="1">
+    <thead>
+
+<th>Fecha</th>
+<th>Hora</th>
+<th>Temperatura 1</th>
+<th>Temperatura 2</th>
+<th>Temperatura 3</th>
+<th>Temperatura 4</th>
+<th>Temperatura 5</th>
+<th>Temperatura Externa</th>
+<th>Humedad Externa</th>
+<th>Temperatura Externa</th>
+<th>Humedad Externa</th>
+</thead>
+<tbody>
+    <?php 
+    include_one
+$registro=mysqli_query($conexion,"SELECT * FROM hongos_integral");
+
+    while ($reg=mysqli_fetch_array($registro)) {?>
+        <tr>
+            <td><?php echo $row['fecha']; ?></td>
+            <td><?php echo $row['fecha']; ?> </td>
+    <td><?php echo $row['hora']; ?></td>
+    <td><?php echo $row['temp1']; ?></td>
+    <td><?php echo $row['temp2']; ?></td>
+    <td><?php echo $row['temp3']; ?></td>
+    <td><?php echo $row['temp4']; ?></td>
+    <td><?php echo $row['temp5']; ?></td>
+    <td><?php echo $row['t_ext']; ?></td>
+    <td><?php echo $row['hum_ext']; ?></td>
+    <td><?php echo $row['tempAvg']; ?></td>
+    <td><?php echo $row['humAvg']; ?></td>
+                         
+    <?php
+    mysqli_close($conexion);
+    ?>
+        </tr>
+         <?php }?>
+
+</tbody>
+
+
+</table>
+
+
+
+
+</body> 
+
+
+
+
+
+</html>

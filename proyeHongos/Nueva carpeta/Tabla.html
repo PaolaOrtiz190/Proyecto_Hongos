@@ -1,0 +1,54 @@
+<?php	
+$usuario  = "root";
+$password = "";
+$servidor = "localhost";
+$basededatos = "hongos";
+$con = mysqli_connect($servidor, $usuario, $password) or die("No se ha podido conectar al Servidor");
+mysqli_query($con,"SET SESSION collation_connection ='utf8_unicode_ci'");
+$db = mysqli_select_db($con, $basededatos);
+
+$sql="Select * From hongos_integral";
+
+?>
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Tabla de Temperaturas </title>
+
+</header>
+<body>
+
+
+    <?php while($row = mysqli_fetch_array($resultado)) {?>
+        
+            <td><?php echo $row['fecha']; ?></td>
+            <td><?php echo $row['fecha']; ?> </td>
+    <td><?php echo $row['hora']; ?></td>
+    <td><?php echo $row['temp1']; ?></td>
+    <td><?php echo $row['temp2']; ?></td>
+    <td><?php echo $row['temp3']; ?></td>
+    <td><?php echo $row['temp4']; ?></td>
+    <td><?php echo $row['temp5']; ?></td>
+    <td><?php echo $row['t_ext']; ?></td>
+    <td><?php echo $row['hum_ext']; ?></td>
+    <td><?php echo $row['tempAvg']; ?></td>
+    <td><?php echo $row['humAvg']; ?></td>
+
+        
+         <?php }?>
+
+
+
+
+
+
+
+
+
+</body> 
+
+
+
+
+
+</html>

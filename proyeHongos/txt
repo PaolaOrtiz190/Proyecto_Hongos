@@ -1,0 +1,10 @@
+AND Hora BETWEEN ? AND ?
+$hora_inicio = $_POST['hora_inicio'];
+$hora_fin = $_POST['hora_fin'];
+
+<label for="hora_inicio">Hora Inicio:</label>
+        <input type="time" id="hora_inicio" name="hora_inicio" required>
+        <br>
+        <label for="hora_fin">Hora Fin:</label>
+        <input type="time" id="hora_fin" name="hora_fin" required>
+        <br>
