@@ -1,10 +1,3 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const { SerialPort } = require('serialport');
-const { ReadlineParser } = require('@serialport/parser-readline');
-const mysql = require('mysql');
-
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -30,10 +23,13 @@ connection.connect((err) => {
 });
 
 parser.on('data', (data) => {
-  console.log(data);
   io.emit('arduinoData', data);
-
+  console.log(data);
   const values = data.split('\t');
+  console.log('values',values);
+  if(values.length>0) {
+  
+  console.log("valores", values);
   const query = 'INSERT INTO hongos (fecha, hora, temp1, temp2, temp3, temp4, temp5, t_ext, hum_ext, tempAvg, hnumAvg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
   connection.query(query, values, (err, result) => {
@@ -43,6 +39,7 @@ parser.on('data', (data) => {
     }
     console.log('Datos insertados:', result);
   });
+}
 });
 
 io.on('connection', (socket) => {
@@ -64,4 +61,4 @@ app.get('/data', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => console.log(Server running on port ${PORT}));
